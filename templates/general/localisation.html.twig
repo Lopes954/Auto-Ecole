@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Localisation{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid" id="backgroundnav">
+    <div class="col-sm-12 lolo" >hh</div>
+</div>
+
+
+
+
+<div class="container-fluid" id="container1">
+    <div class="row"id="row1">
+
+        <div class="col-sm-3">
+            <h1>Ou somme nous</h1>
+
+            <div class="col12 loc">
+                <ul class="tagi">
+                    <li><i class="fas fa-map-marker-alt icone"></i>&nbsp;1 rue averroes,95400,Villiers-le-Bel</li>
+                    <li><i class="fas fa-phone icone"></i>&nbsp;06.23.12.27.97</li>
+                    <li><i class="fas fa-envelope-open icone"></i>&nbsp;Contact-@hotmail.fr</li>
+                    <li><i class="fab fa-internet-explorer icone"></i>&nbsp;www.monauto95.fr</li>
+
+
+                </ul>
+            </div>
+
+                        <h1>Nos réseaux</h1>
+
+            <div class="col12 res">
+                <ul class="tago">
+                    <a href="https://www.snapchat.com/"><img class="imgreseau"src="{{asset('image/snap.png')}}"></i></a>
+                    <a href="https://www.facebook.com/"><img class="imgreseau"src="{{asset('image/fb.jpg')}}"></i></a>
+                    <a href="https://www.instagram.com/?hl=fr"><img class="imgreseau"src="{{asset('image/insta.png')}}"></i></a>
+                    <a href="https://twitter.com/?lang=fr"><img class="imgreseau"src="{{asset('image/twitter.jpg')}}"></i></a>
+
+
+                </ul>
+            </div>
+
+            <div class="col12 bureau">
+            <ul class="li">
+                                    <h4>Horaires du bureau</h4>
+            {% for hb in horaires %}
+                                
+               <li>{{ hb.jour }} {{ hb.heureouverture }}   {{ hb.heurefermeture }}</li>
+   
+            {% endfor %} 
+            </ul>
+                            </div>
+                                <h4>Horaires de conduite</h4>
+                            <div class="col12 hconduite">
+                                <ul class="li">
+                                {% for hc in horairesconduite %}
+                                    
+                                    <li>{{ hc.jour }} {{ hc.horaireouverture }}  {{ hc.horairefermeture }}</li>
+                                {% endfor %} 
+                                </ul>
+                            </div>
+        
+        </div>
+
+                <div class="col-sm-9 mapi"><iframe src="https://www.google.fr/maps/place/1+Rue+Averroes,+95400+Villiers-le-Bel/@49.0029832,2.3923079,17z/data=!3m1!4b1!4m5!3m4!1s0x47e66a1113fbb3c5:0xeaa403c60fab8c7c!8m2!3d49.0029832!4d2.3944966" width="1400" height="805" allowfullscreen="" loading="lazy"></iframe></div>
+
+
+        
+
+ 
+ 
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock %}

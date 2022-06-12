@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+
+
+{% block body %}
+
+    <div id="calend">
+    
+        {{ form_start(formReservation) }}
+        {{ form_widget(formReservation.dateReservation)}}
+        {{ form_end(formReservation) }}
+ </div>
+
+{% endblock %}

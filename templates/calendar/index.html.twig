@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendar index
+{% endblock %}
+
+{% block body %}
+	<h1>Calendar index</h1>
+	{# {{dump(data)}} #}
+	<div id='calendar'></div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Debut</th>
+				<th>Fin</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			{% for calendar in data %}
+				<tr>
+					<td>{{ calendar.id }}</td>
+					<td>{{ calendar.debut ? calendar.debut|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ calendar.fin ? calendar.fin|date('Y-m-d H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('calendar_show', {'id': calendar.id}) }}">show</a>
+						<a href="{{ path('calendar_edit', {'id': calendar.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('calendar_new') }}">Create new</a>
+{% endblock %}
+{% block javascripts %}
+	<script>
+	//pour le chargement
+		window.onload = () => {
+		let calendarElt = document.querySelector("#calendar")
+
+	//on passe calendar elt
+		let calendar = new FullCalendar.Calendar(calendarElt, {
+			//option de notre calendrier
+			initialView: 'timeGridWeek',
+			locale: 'fr',
+			timeZone: 'Europe/Paris',
+			headerToolbar: {
+				start: 'prev,next today',
+				center: 'title',
+				end: 'dayGridMonth,timeGridWeek',
+				
+			},
+			events: {{ data|raw }},
+			editable: true,
+			eventResizableFromStart: true
+
+		})
+
+// ecouteur d'evenement
+		calendar.on('eventChange', (e) => {
+			console.log('evenements :',e);
+			let url = `/calendar/${e.event.id}/edit`
+			let donnees = {
+				"backgroundColor": e.event.backgroundColor,
+				"end": e.event.end,
+				"start": e.event.start,
+				"textColor": e.event.textColor,
+				"allDay": e.event.allDay
+
+			}
+			console.log('mes données: ',donnees)
+
+			let xhr = new XMLHttpRequest
+				xhr.open("PUT", url)
+				xhr.send(JSON.stringify(donnees))
+		})
+
+		calendar.render()
+	}
+</script>
+
+
+{% endblock %}

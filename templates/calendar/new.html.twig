@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Calendar{% endblock %}
+
+{% block body %}
+{% for msg in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+    
+
+    {{ include('calendar/_form.html.twig') }}
+
+    {# <a href="{{ path('calendar_index') }}">Reserver</a> #}
+{% endblock %}

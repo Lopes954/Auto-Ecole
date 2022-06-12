@@ -1,0 +1,493 @@
+
+html{
+    /* scroll-behavior: smooth; */
+}
+
+#containerforfait{
+
+    background: rgb(8, 35, 58);
+}
+
+/* .animation{
+    margin-left: -2000px;
+} */
+
+.pmd{
+    color: white;
+    padding-top: 50px;
+    text-align: center;
+    font-size: 60px;
+    /* margin-left: 200px; */
+    /* display: none; */
+}
+.price{
+    color: white;
+    font-size: 40px;
+    margin-left: 55px; 
+    /* display: none; */
+
+
+  
+}
+#imgtarif{
+    width: 500px;
+    padding-top: 80px;
+    padding-bottom: 70px;
+
+}
+#containerhomebtn{
+    margin-top: 80px;
+}
+
+.btn22{
+    border-radius: 5px;
+    background: rgba(218, 223, 222, 0.555);
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
+    color: rgb(8, 35, 58);
+    margin:10px;
+    
+    
+}
+
+.btn22:hover{
+    background-color: rgba(0, 0, 0, 0.678);
+    color: white;
+}
+.btndirect{
+    
+        margin-left: 5px;
+        background-color: rgb(105, 16, 16);
+        border-radius: 10px;
+        color: white;
+    
+    
+}
+.large{
+    width: 1300px;
+}
+.avantage3{
+    border:  1px solid rgb(21, 29, 53);
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    background-color: #69728642;;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+    border-radius: 5px;
+}
+.avantage2{
+    border:  1px solid rgb(21, 29, 53);
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(53, 75, 110);
+    padding: 15px;
+}
+
+
+#containertarif{
+    font-size: 30px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration-line: underline;
+    margin-top: 80px;
+    /* margin-bottom: 20px; */
+
+}
+
+
+.titretarif{
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-align: center;
+
+}
+.totologo{
+    text-align: center;
+    background: white;
+
+}
+#imglog{
+    width: 50px;
+    margin-top: 60px;
+    border-radius: 30px;
+    background-color: white;
+}
+#imglog1{
+    width: 50px;
+    margin-top: 100px;
+    border-radius: 30px;
+}
+
+#imglog2{
+    width: 50px;
+    margin-top: 100px;
+    border-radius: 30px;
+    
+}
+#imglog3{
+    width: 50px;
+    margin-top: 100px;
+    border-radius: 30px;
+    background-color: white;
+}
+#imglog4{
+    width: 50px;
+    margin-top: 100px;
+    border-radius: 30px;
+    
+}
+
+#containertarif10{
+    margin-top: 20px;
+    background: rgb(93, 130, 161);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+#containertarif2{
+    margin-top: 250px;
+}
+
+#containertarif20{
+    margin-top: 20px;
+    background: rgb(93, 130, 161);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+#containertarif30{
+    margin-top: 20px;
+    background: rgb(93, 130, 161);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0,0,0,3);
+    padding-bottom: 10px;
+
+    
+}
+
+
+#accordionFlushExample:hover{
+    transform: translateY(-5px);
+}
+#containertarif40{
+    margin-top: 20px;
+
+    background: rgb(93, 130, 161);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+#containertarif50{
+    background: rgb(93, 130, 161);
+    margin-top: 20px;
+
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+
+
+#containertarif4{
+    margin-top: 250px;
+    background-color: rgb(255, 255, 255);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+#containertarif5{
+    margin-top: 250px;
+    margin-bottom: 150px;
+    background-color: rgb(255, 255, 255);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+#rowtarif30{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    color: white;
+    
+}
+#rowtarif40{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    color: white;
+    
+}
+#rowtarif50{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    color: white;
+    
+}
+#rowtarif60{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    color: white;
+    
+}
+#rowtarif7{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background: rgb(8, 35, 58);
+    font-size: 20px;
+    color: white;
+    
+}
+#containertarif10{
+    background: white;
+}
+
+#rowtarif4{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    font-size: 20px;
+    
+}
+#rowtarif5{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    font-size: 20px;
+    
+}
+#packpack1,#packpack2,#packpack3,#packpack4{
+    margin-top: 25px;
+    color: rgba(0, 0, 0, 0.678);
+}
+
+#public1,#public2,#public3,#public4{
+    margin-top: 10px;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.678);
+}
+
+#direct1,#direct2,#direct3,#direct4{
+    color: rgba(0, 0, 0, 0.678);
+}
+
+
+.collapsed{
+    color: rgb(0, 0, 0) 2px;
+}
+
+#pack{
+    background-color: navy;
+    color: white;
+    font-size: 30px;
+    font-style: oblique;
+    text-align: center;
+}
+
+
+.acordeon{
+    margin-top: 10px;
+}
+.liste10{
+    font-size: 15px;
+    color: rgb(7, 50, 131);
+}
+.permis{
+    font-size: 20px;
+}
+.description{
+    font-size: 15px;
+}
+
+
+.h2{
+    margin-top: 150px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration-line: underline;
+    padding-top: 100px;
+
+}
+
+.comp{
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 30px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.class1{
+    margin-top: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+.class2{
+    margin-top: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+.class3{
+    margin-top: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+.class4{
+    margin-top: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+.p1{
+    margin-top: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 100px;
+
+}
+.p2{
+    margin-top: 260px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 100px;
+
+}
+.p3{
+    margin-top: 180px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 100px;
+
+}
+.p4{
+    margin-top: 240px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 100px;
+
+}
+.bg2{
+    background-color: thistle;
+}
+.bg1{
+    background-color: rgb(97, 202, 202);
+}
+.ok{
+    color: white;
+}
+.pack1{
+    background-color: teal;
+}
+.pack2{
+    background-color: rgb(6, 122, 175);
+}
+.pack3{
+    background-color: rgb(0, 0, 0);
+}
+.liste11{
+    background-color: wheat;
+}
+.bold{
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: maroon;
+}
+.page{
+    background-color: rgb(255, 255, 255);
+}
+
+.acordeon{
+    margin-left: 0px;
+}
+
+#containertarif3{
+    margin-top: 250px;
+    margin-left: 30px;
+    background-color: rgb(255, 255, 255);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#footer{
+    margin-top: 150px;
+}
+#titrefooter{
+    background-color: black;
+}
+.doc{
+    margin-top: 30px;
+    font-size: 20px;
+    /* position: fixed;  */
+    z-index: 100; 
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 120px;
+    animation: pulse 1.3s infinite;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 20px;
+    left: 90px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 #333;
+    background: rgb(209, 187, 187);
+    
+  
+}
+@keyframes pulse {
+    to {
+        box-shadow: 0 0 0 8px rgba(255,255,255,0.01);
+    }   
+}
+.doc:hover{
+    font-size: 20px;
+    background-color: rgb(0, 0, 0);
+}
+#logojustificatif:hover{
+    color: rgb(255, 255, 255);
+}
+#listejustificatif{
+    color: rgb(0, 0, 0);
+    position: absolute;
+    display: none;
+    /* z-index: 100; */
+    background-color: rgb(204, 194, 194);
+    border-radius: 10px;
+    border: rgb(66, 65, 65) solid 6px;
+    list-style: none;
+    margin: 5px;
+    padding: 10px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 60px;
+    width: 25%;
+    
+
+
+}
+#accordionFlushExample{
+    margin-bottom: 300px;
+}
+
+#logojustificatif{
+    color: rgb(102, 101, 101);
+    /* font-size: 35px; */
+    
+    
+
+}
+
+
+
+.docfournir{
+    text-align: center;
+    text-decoration: underline;
+  
+}
+
+.information{
+    list-style: none;
+}
+

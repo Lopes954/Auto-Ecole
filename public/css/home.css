@@ -1,0 +1,178 @@
+.carousel-item{
+    height: 500px;
+}
+#containerhome1{
+    color: white;
+    background: rgb(8, 35, 58);
+    margin-bottom: 30px;
+ 
+    
+}
+.titre50{
+    font-size:40px;
+    text-align: center;
+    font-size:xx-large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-top: 30px;
+}
+ 
+#rowhome2{
+   
+    text-align: center;
+    font-size:xx-large;
+    font-style: italic;
+    margin-top: 200px;
+    right: -2000px;
+
+}
+#containerhome2{
+    margin-right: 50px;
+}
+.statistique1,.statistique2,.statistique3{
+    /* background-color: black; */
+    margin-left: -2000px;
+}
+.stat{
+    font-size:xx-large;
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* margin-left: -3500px; */
+
+
+}
+
+.tag{
+    font-size: 15px;
+    padding-top: 10px;
+    margin-bottom: 200px;
+    /* margin-left: -3500px; */
+
+
+}
+.imgauto{
+    height: 220px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 40%;
+    margin-left: 200px;
+    
+}
+#imgcar{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 50%;
+    margin-top: -200px;
+    display: inline-block;
+    position: relative;
+    margin-left: 30%;
+
+
+}
+
+.iconetexte{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 80px;
+}
+
+.texte1{
+    font-size: 25px;
+    font-size: solid;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.texte2{
+    font-size: 15px;
+    margin-top: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+
+}
+.texte3{
+    font-size: 15px;
+    margin-top: 15px;
+    /* margin-left: 40px; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+#rowhome5{
+    text-align: center;
+    font-size:  40px ;
+    color: rgb(0, 0, 0);
+    margin-top: 70px;
+    font-weight:bold;
+    font-style: oblique;
+    
+}
+#bor1,#bor2{
+   border-right: rgb(17, 49, 78) solid;
+   height: 200px;
+
+   
+}
+
+
+.titre50{
+    margin-top: 40px;
+    color: rgb(0, 0, 0);
+}
+.card{
+    margin-top: 40px;
+    height: 350px;
+    margin-bottom: 40px;
+    border: solid 2px red;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+
+}
+
+
+
+#containerhome3{
+    background: rgb(255, 255, 255);
+    /* padding-bottom: 80px; */
+    
+    
+
+    
+  
+}
+.imgformateur{
+    height: 200px;
+    
+}
+.card:hover{
+    transform: translateY(-5px);
+
+
+}
+
+
+.collapsed{
+    color: white 2px;
+}
+
+#pack{
+    background-color: navy;
+    color: white;
+    font-size: 30px;
+    font-style: oblique;
+    text-align: center;
+}
+
+
+.acordeon{
+    margin-top: 100px;
+}
+.liste10{
+    font-size: 15px;
+    color: teal;
+}
+.permis{
+    font-size: 20px;
+}
+.description{
+    font-size: 15px;
+}
+.liste11{
+    list-style: none;
+}

@@ -1,0 +1,493 @@
+/* login */
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.choose-email,.insc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.inputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 200px;
+
+}
+#insc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+.test{
+    font-size: 30px;
+}
+
+.formlogin{
+    color: white;
+    margin-top: 20px;
+    background: rgb(8, 35, 58);
+    border-radius: 50px;
+    height: 480px;
+    border:solid 10px rgb(0, 0, 0);
+
+
+}
+.formrenseignement{
+    color: white;
+    margin-top: 20px;
+    background: rgb(71, 96, 117);
+    border-radius: 50px;
+    height: 480px;
+    border:solid 10px rgb(0, 0, 0);
+
+
+}
+#containerform{
+    text-align: center;
+    width: 450px;
+    background: rgb(8, 35, 58);
+    border:rgb(0, 0, 0) solid 15px ;
+    border-radius:20px ;
+    color: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
+    margin-left: 700px;
+}
+
+form p.insc span{
+    color: red;
+}
+#btnsub{
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+#btnsub:hover{
+    font-size: 15px;
+}
+#btnco:hover{
+    background-color: red;
+    color: rgb(255, 255, 255);
+}
+
+
+#logins{
+    color: rgb(194, 23, 23);
+    text-decoration: underline;}
+#inputUsername{
+    margin-bottom: 7px;
+    border:  solid 10px rgb(8, 35, 58);
+    border-radius: 20px;
+    
+    
+}
+#inputPassword{
+    margin-bottom: 10px;
+    border:  solid 10px rgb(8, 35, 58);
+    border-radius: 20px;
+    
+}
+
+
+
+
+/* formulaire renseignement */
+
+/* @media sreen and (max-width:500px) {
+    .form-group{
+        width: 700px;
+    }
+    
+
+} */
+
+#footer{
+    color: white;
+    padding: 20px;
+    padding-left: 200px;
+    /* margin-top: 200px; */
+}
+#imgfooteur{
+    border-radius: 150px;
+    width: 70px;
+    margin-left: 70px;
+    
+
+   
+}
+.join{
+    margin-bottom: 10px;
+    margin-left: 150px;
+}
+.lien{
+    text-decoration: none;
+    color: white;
+
+}
+.lien:hover{
+    color: rgb(238, 130, 184);
+}
+.imgreseau{
+    margin-top: 10px;
+    margin-right: 5px;
+    padding-bottom: 15px;
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+
+
+
+}
+.lireseau{
+    list-style: none;
+    text-decoration: none;
+    padding-top: 30px;
+    margin-left: 200px;
+
+
+    
+   
+
+
+
+}
+/*max, di l'ecran est inferieur ou égal alors{...}*/
+@media screen and (max-width: 1600px){
+    .resume,.siege,.email,.tel{
+        font-size: 15px;
+    }
+    #imgfooteur{
+        margin: initial;
+        font-size: 50px;
+   
+    }
+    .rensei{
+        margin-top: 50px;
+    }
+       
+
+
+}
+@media screen and (max-width: 1421px){
+    .resume,.siege,.email,.tel{
+        font-size: 12px;
+    }
+    #imgfooteur{
+        margin: initial;
+        font-size: 50px;
+   
+    }
+    .rensei{
+        margin-top: 50px;
+    }
+
+  
+       
+
+
+}
+@media screen and (max-width: 1150px){
+    .resume,.siege,.email,.tel{
+        font-size: 10px;
+    }
+    #imgfooteur{
+        margin: initial;
+        font-size: 50px;
+   
+    }
+    .rensei{
+        margin-top: 50px;
+    }
+    .join{
+        margin: none;
+        
+        
+    }
+
+    .lien{
+        display: i;
+        color: darkgoldenrod;
+        margin: none;
+
+
+       
+    }
+
+       
+
+
+}
+
+
+
+
+.resume{
+    margin-top: 20px;
+   
+}
+.siege{
+    margin-top: 20px;
+    
+}
+.email{
+   margin-bottom: 30px;
+  
+
+}
+#taga{
+    margin-top: 20px;
+}
+.rensei{
+    font-size: 20px;
+    text-align: center;
+    background-color: rgb(148, 8, 8);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  
+    border: rgb(255, 255, 255) solid 1px;
+    border-bottom: none;
+    width: 150px;
+    max-width: 1000px;
+    min-width: 300px;
+  
+}
+/* .form_renseignement{
+    min-width: 100%;
+} */
+.form-group{
+    background-color: rgb(0, 0, 0);
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 5px;
+    border: rgb(255, 255, 255) solid 1px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border-top: none;
+    max-width: 1000px;
+    min-width: 300px;
+    
+}
+
+#form_renseignement_nom{
+    border-color: rgb(0, 0, 0) ;
+    width: 270px;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-left: 14px;
+
+
+
+}
+#form_renseignement_tel{
+    border-color: rgb(0, 0, 0);
+    width: 270px;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-left: 14px;
+
+
+
+}
+#form_renseignement_email{
+    border-color: rgb(0, 0, 0);
+    width: 270px;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-left: 14px;
+
+
+
+
+}
+#form_renseignement_message{
+    border-color: rgb(0, 0, 0);
+    width: 270px;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-left: 14px;
+
+
+
+
+}
+
+#btnrens{
+width: 100px;
+margin-top: 10px;
+border-radius: 5px;
+margin-left: 90px;
+
+
+
+}
+
+
+
+/* formulaire inscription */
+.titleins{
+    color: rgb(0, 0, 0);
+    font-size: 60px;
+    margin-bottom: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+#formregister{
+    text-align: center;
+    width: 1200px;
+    height: 800px;
+    background: rgb(24, 61, 161);
+    border:rgb(0, 0, 0) solid 15px ;
+    border-radius:20px ;
+    color: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
+    /* margin-left: 600px; */
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 30px;
+}
+
+#registration_form_plainPassword{
+    
+    
+    
+    text-align: center;
+
+} 
+#registration_form_email{
+    margin-bottom: 20px;
+    text-align: center;
+}
+#registration_form_prenom{
+    margin-bottom: 20px;
+    text-align: center;
+}
+#registration_form_nom{
+    margin-bottom: 20px;
+    text-align: center;
+}
+#registration_form_telephone{
+    margin-bottom: 20px;
+    text-align: center;
+}
+#registration_form_adresse{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.btnregister{
+    border-radius: 10px;
+    background-color: rgb(136, 13, 13);
+    color: white;
+    font-size: 30px;
+    margin-top: 75px;
+}
+
+.btnregister:hover{
+    font-size: 25px;
+}
+
+
+
+/* calendrier */
+
+#calendrier{
+    width: 80%;
+    margin: auto;
+}
+
+
+/*form reservation*/
+
+#formreservation{
+    background-color: rgb(0, 0, 0);
+    margin-top: 60px;
+    text-align: center;
+    padding-top: 50px;
+    border-radius: 50px;
+    height: 700px;
+    width: 600px;
+    border: solid 8px navy;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 30px;
+    margin-left: 660px;
+
+}
+#registration_form_age_time{
+    display: none;
+}
+
+.textereservation{
+    color: white;
+    margin-bottom: 60px;
+}
+#calendar_start_date{
+    color: rgb(117, 112, 112);
+    text-align: center;
+
+}
+#calendar_end_date{
+    color: rgb(139, 131, 131);
+    text-align: center;
+}
+#calendar_start{
+    font-size: 50px;
+
+
+}
+#calendar_end{
+    font-size: 50px;
+    margin-top: 30px;
+}
+#save{
+    background-color: rgb(168, 19, 47);
+    margin-top: 40px;
+    color: white;
+    font-size: 20px;
+}
+#save:hover{
+    font-size: 22px;
+    background-color: rgb(16, 218, 66);
+    
+
+}
+#calendar_start_time_hour{
+    margin-top: 20px;
+}
+#calendar_end_time_minute{
+    margin-top: 20px;
+}
+
+
+.required{
+    display: none;
+}
+
+

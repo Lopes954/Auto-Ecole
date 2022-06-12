@@ -1,0 +1,979 @@
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form id="containerform">
+                {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+                {% endif %}
+                <h1>se connecter</h1>
+                <div class="social-media">
+                    <p><i class="fab fa-instagram"></i></p>&nbsp;&nbsp;
+                    <p><i class="fab fa-google"></i></p>&nbsp;&nbsp;
+                    <p><i class="fab fa-facebook-square"></i></p>&nbsp;&nbsp;
+                    <p><i class="fas fa-envelope-square"></i></p>&nbsp;&nbsp;
+                </div>
+                <p class="choose-email">Mon Compte:</p>
+
+                <div class="inputs">
+                    <input type="text" placeholder="pseudo" value="{{ last_username }}" name="username"
+                        id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+                    <input type="password" placeholder="mot de passe" name="password" id="inputPassword"
+                        class="form-control" autocomplete="current-password" required>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" </div>
+
+                    <p class"insc" id="insc">je n'ai pas de compte<a class="nav-link" href="{{path('app_register')}}"
+                            id="logins"> Je m'inscris </a></p>
+                    <div align="center">
+                        <button type="submit" id="btnsub">se connecter
+                        </button>
+
+                    </div>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+
+
+</div>
+{% endblock %}
+
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Renseignement;
+use App\Form\FormRenseignementType;
+use App\Controller\SecurityController;
+use App\Repository\ContactfRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
+class SecurityController extends AbstractController
+{
+    /**
+     * @Route("/login", name="app_login")
+     */
+    public function login(AuthenticationUtils $authenticationUtils, Request $request, ContactfRepository $repocon): Response
+    {
+
+        $route = "app_login";
+        //footer
+        $renseignement = new Renseignement;
+
+        $contact = $repocon->findBy(array('id'=>1));
+        $contact = $contact[0];
+
+        $form = $this->createForm(FormRenseignementType::class, $renseignement);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($renseignement);
+            $manager->flush();
+            return $this->redirectToRoute('contactf');
+        }
+
+        // if ($this->getUser()) {
+        //     return $this->redirectToRoute('target_path');
+        // }
+
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('security/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error,
+            'form' => $form->createView(),
+            'contact'=> $contact,
+            'route' => $route
+            ]);
+    }
+    /**
+     * @Route("/logout", name="app_logout")
+     */
+    public function logout(): void
+    {
+        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+}
+
+
+
+<h1 class="titleins">inscription</h1>
+
+<div class="row"id="identifiant">
+    <div class="col-sm-6">
+        {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.username, {label: 'Pseudo'}) }}
+        {{ form_row(registrationForm.plainPassword, {label: 'Mot de passe'}) }}
+</div>
+    </div>
+
+    <div class="col-sm-4">   
+        {{ form_row(registrationForm.nom) }}
+
+        {{ form_row(registrationForm.prenom) }}
+        {{ form_row(registrationForm.telephone) }}
+        {{ form_row(registrationForm.email) }}
+    </div>  
+
+    <div class="col-sm-4">   
+        {{ form_row(registrationForm.adresse) }}
+        {{ form_row(registrationForm.age) }}
+     </div>    
+        {{ form_row(registrationForm.agreeTerms) }}
+   <div class="col12">
+   <div class="col-sm-4"></div>
+   <div class="col-sm-12">
+
+        <button type="submit" class="btnregister">s'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+    <div class="col-sm-4"></div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<!-- page tariffffffffffffffffffffffffffff -->
+
+{#forfait manuelle#}
+{#forfait manuelle#}
+{#forfait manuelle#}
+{#forfait manuelle#}
+{#forfait manuelle#}
+
+
+
+
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Forfait{% endblock %}
+
+{% block body %}
+<div class="page">
+
+    
+            {# avantageFormation #}
+
+            {{ include("general/tarif/avantageformation.html.twig") }}
+
+            <div class="container"id="containerhomebtn">
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10">
+                        <a href="#containertarif10"><button class="btn22">Permis Boite Manuelle</button></a>
+                        <a href="#containertarif100"><button class="btn22">Permis Boite Automatique</button></a>
+                        <a href="#containertarif1000"><button class="btn22">Conduite Accompagnée</button></a>
+                        <a href="#containertarif10000"><button class="btn22">Permis Moto</button></a>
+                        
+                        
+                    <div class="col-sm-1"></div>
+                
+                </div>
+            </div>
+
+                {#forfait manuelle#}
+                {#forfait manuelle#}
+                {#forfait manuelle#}
+                {#forfait manuelle#}
+                {#forfait manuelle#}
+
+
+
+
+                <div class="container-fluid" id="containertarif10">
+                    <div class="row">
+                        <div class="col-sm-4 totologo"></div>
+                        <div class="col-sm-4 totologo">
+                        <img id="imglog1"src="{{asset('image/boitemanu.jpg')}}"></div>
+                        <div class="col12 titretarif">LES TARIFS <br>DES PACKS PERMIS<br>(Boîte Manuelle)</div>
+                        <div class="col-sm-4 totologo"></div>
+                    </div>
+
+                    
+                </div>
+
+                    <div class="container-fluid" id="containertarif30">
+                        <div class="row" id="rowtarif40">
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-2"id="packpack1">PACK</div>
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-2"id="public1">PRIX
+                                <div class="col12 ">public</div>
+
+                            </div>
+                            <div class="col-sm-1"id="direct1">-50$
+                                <div class="col12 ">paiement en 1 fois</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                          
+
+
+                <div class="">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading1">
+                                        <button class="accordion-button collapsed pack1" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse1 " aria-expanded="false " aria-controls="flush-collapse1">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Zen</div>
+                                                <div class="col12 description">Formation au code offerte + 20 cours de conduite</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse1" class="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Formation au code de la route
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">699$</div>
+                                                <div class="col-sm-2 bold">649$</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading2">
+                                        <button class="accordion-button collapsed pack2" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse2" aria-expanded="false" aria-controls="flush-collapse2">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Accéléré
+                                                </div>
+                                                <div class="col12 description">Formation au code offerte + 20 cours de conduite en moins de 30 jours + un accompagnement à l'examen
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse2" class="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Accompagnement par un moniteur lors de votre 1ère présentation à l'épreuve pratique
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Formation au code de la route
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">1199$</div>
+                                                <div class="col-sm-2 bold">1049$</div>
+                                            </div>
+
+
+
+                             
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading3">
+                                        <button class="accordion-button collapsed pack3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse3" aria-expanded="false" aria-controls="flush-collapse3">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Réussite
+                                                </div>
+                                                <div class="col12 description">Formation au Code offerte + 30 cours de conduite et un accompagnement à l'examen pour réussir son permis en toute tranquillité
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse3" class="accordion-collapse collapse" aria-labelledby="flush-heading3" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Accompagnement par un moniteur lors de votre 1ère présentation à l'épreuve pratique
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; Formation au code de la route</li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; Suivi de votre formation par un coach
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; 5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; 20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">1249$</div>
+                                                <div class="col-sm-2 bold">1199$</div>
+                                            </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                
+                
+                
+                
+                
+                    {#forfait automatique#}
+                    {#forfait automatique#}
+                    {#forfait automatique#}
+                    {#forfait automatique#}
+                    {#forfait automatique#}
+                
+                
+                
+                
+                
+                
+                <div class="container-fluid" id="containertarif100">
+                    <div class="row">
+                        <div class="col-sm-4 totologo"></div>
+                        <div class="col-sm-4 totologo">
+                        <img id="imglog2"src="{{asset('image/boiteauto.png')}}"></div>
+                        <div class="col12 titretarif">LES TARIFS <br>DES PACKS PERMIS<br>(Boîte Automatique)</div>
+                        <div class="col-sm-4 totologo"></div>
+                    </div>
+
+                    
+                </div>
+
+                    <div class="container-fluid" id="containertarif30">
+                        <div class="row" id="rowtarif40">
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-2"id="packpack2">PACK</div>
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-2"id="public2">PRIX
+                                <div class="col12 ">public</div>
+
+                            </div>
+                            <div class="col-sm-1"id="direct2">-50$
+                                <div class="col12">paiement en 1 fois</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                          
+
+
+                <div class="">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading4">
+                                        <button class="accordion-button collapsed pack1" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse4 " aria-expanded="false " aria-controls="flush-collapse4">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Zen</div>
+                                                <div class="col12 description">Formation au code offerte + 20 cours de conduite</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse4" class="accordion-collapse collapse" aria-labelledby="flush-heading4" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Formation au code de la route
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">699$</div>
+                                                <div class="col-sm-2 bold">649$</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading5">
+                                        <button class="accordion-button collapsed pack2" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse5" aria-expanded="false" aria-controls="flush-collapse5">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Accéléré
+                                                </div>
+                                                <div class="col12 description">Formation au code offerte + 20 cours de conduite en moins de 30 jours + un accompagnement à l'examen
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse5" class="accordion-collapse collapse" aria-labelledby="flush-heading5" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Accompagnement par un moniteur lors de votre 1ère présentation à l'épreuve pratique
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Formation au code de la route
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">1199$</div>
+                                                <div class="col-sm-2 bold">1049$</div>
+                                            </div>
+
+
+
+                             
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading6">
+                                        <button class="accordion-button collapsed pack3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse6" aria-expanded="false" aria-controls="flush-collapse6">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Réussite
+                                                </div>
+                                                <div class="col12 description">Formation au Code offerte + 30 cours de conduite et un accompagnement à l'examen pour réussir son permis en toute tranquillité
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse6" class="accordion-collapse collapse" aria-labelledby="flush-heading6" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Accompagnement par un moniteur lors de votre 1ère présentation à l'épreuve pratique
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; Formation au code de la route</li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; Suivi de votre formation par un coach
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; 5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; 20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">1249$</div>
+                                                <div class="col-sm-2 bold">1199$</div>
+                                            </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    
+                    
+                    
+                    {#forfait Acommpagnée#}
+                    {#forfait Acommpagnée#}
+                    {#forfait Acommpagnée#}
+                    {#forfait Acommpagnée#}
+                    {#forfait Acommpagnée#}
+                    
+                    
+                    
+                    
+                    <div class="container-fluid"id="containertarif1000">
+                    <div class="row">
+                        <div class="col-sm-4 totologo"></div>
+                        <div class="col-sm-4 totologo">
+                        <img id="imglog3"src="{{asset('image/permisaccompagner.jpg')}}"></div>
+                        <div class="col12 titretarif">LES TARIFS <br>DES PACKS PERMIS<br>(Accompagnée)</div>
+                        <div class="col-sm-4 totologo"></div>
+                    </div>
+                    
+                </div>
+
+                    <div class="container-fluid" id="containertarif40">
+                        <div class="row" id="rowtarif50">
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-2"id="packpack3">PACK</div>
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-2"id="public3">PRIX
+                                <div class="col12 ">public</div>
+
+                            </div>
+                            <div class="col-sm-1"id="direct3">-50$
+                                <div class="col12 paye">paiement en 1 fois</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                                    
+                        <div class="">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading7">
+                                        <button class="accordion-button collapsed pack1" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse7 " aria-expanded="false " aria-controls="flush-collapse7">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Zen</div>
+                                                <div class="col12 description">Formation au code offerte + 20 cours de conduite</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse7" class="accordion-collapse collapse" aria-labelledby="flush-heading7" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Formation au code de la route
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">699$</div>
+                                                <div class="col-sm-2 bold">649$</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading8">
+                                        <button class="accordion-button collapsed pack2" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse8" aria-expanded="false" aria-controls="flush-collapse8">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Accéléré
+                                                </div>
+                                                <div class="col12 description">Formation au code offerte + 20 cours de conduite en moins de 30 jours + un accompagnement à l'examen
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse8" class="accordion-collapse collapse" aria-labelledby="flush-heading8" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Accompagnement par un moniteur lors de votre 1ère présentation à l'épreuve pratique
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Formation au code de la route
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">1199$</div>
+                                                <div class="col-sm-2 bold">1049$</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading9">
+                                        <button class="accordion-button collapsed pack3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse9" aria-expanded="false" aria-controls="flush-collapse9">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Réussite
+                                                </div>
+                                                <div class="col12 description">Formation au Code offerte + 30 cours de conduite et un accompagnement à l'examen pour réussir son permis en toute tranquillité
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse9" class="accordion-collapse collapse" aria-labelledby="flush-heading9" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Accompagnement par un moniteur lors de votre 1ère présentation à l'épreuve pratique
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; Formation au code de la route</li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; Suivi de votre formation par un coach
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; 5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; 20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">1249$</div>
+                                                <div class="col-sm-2 bold">1199$</div>
+                                            </div>
+
+                                </div>
+                            </div>
+                        </div>
+        </div>           
+    </div>
+
+
+                    {#forfait Motot#}
+                    {#forfait Motot#}
+                    {#forfait Motot#}
+                    {#forfait Motot#}
+                    {#forfait Motot#}
+                    {#forfait Motot#}
+                   
+
+
+
+
+                <div class="container-fluid"id="containertarif10000">
+                    <div class="row">
+                        <div class="col-sm-4 totologo"></div>
+                        <div class="col-sm-4 totologo">
+                        <img id="imglog4"src="{{asset('image/permismoto.png')}}"></div>
+                        <div class="col12 titretarif">LES TARIFS <br>DES PACKS PERMIS<br>(Moto)</div>
+                        <div class="col-sm-4 totologo"></div>
+                    </div>
+                    
+                </div>
+
+                    <div class="container-fluid" id="containertarif50">
+                        <div class="row" id="rowtarif60">
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-2"id="packpack4">PACK</div>
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-2"id="public4">PRIX
+                                <div class="col12 ">public</div>
+
+                            </div>
+                            <div class="col-sm-1"id="direct4">-50$
+                                <div class="col12 ">paiement en 1 fois</div>
+                            </div>
+                        </div>
+                        
+                    </div>                   
+                   
+                        <div class="">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading10">
+                                        <button class="accordion-button collapsed pack1" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse10 " aria-expanded="false " aria-controls="flush-collapse10">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Zen</div>
+                                                <div class="col12 description">Formation au code offerte + 20 cours de conduite</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse10" class="accordion-collapse collapse" aria-labelledby="flush-heading10" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                        {% for forfait in forfaits %}
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Formation au code de la route
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">{{ forfait.prix }}</div>
+                                                <div class="col-sm-2 bold">649$</div>
+                                            
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading11">
+                                        <button class="accordion-button collapsed pack2" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse11" aria-expanded="false" aria-controls="flush-collapse11">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Accéléré
+                                                </div>
+                                                <div class="col12 description">Formation au code offerte + 20 cours de conduite en moins de 30 jours + un accompagnement à l'examen
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse11" class="accordion-collapse collapse" aria-labelledby="flush-heading11" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Accompagnement par un moniteur lors de votre 1ère présentation à l'épreuve pratique
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Formation au code de la route
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">1199$</div>
+                                                <div class="col-sm-2 bold">1049$</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading12">
+                                        <button class="accordion-button collapsed pack3" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse12" aria-expanded="false" aria-controls="flush-collapse12">
+                                            <div class="row">
+                                                <div class="col12 permis">Permis Réussite
+                                                </div>
+                                                <div class="col12 description">Formation au Code offerte + 30 cours de conduite et un accompagnement à l'examen pour réussir son permis en toute tranquillité
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse12" class="accordion-collapse collapse" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6 liste10" >
+                                                    <ul class="liste11">
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Accompagnement par un moniteur lors de votre 1ère présentation à l'épreuve pratique
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle liste10"></i>&nbsp;Contrôle de connaissances théoriques sans enseignant
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de vérification
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Livre de Code en ligne
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Accès plateforme
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Évaluation préalable
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp;Frais d'inscription et gestion de dossier
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; Formation au code de la route</li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; Suivi de votre formation par un coach
+
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; 5H de formation en ligne à la conduite
+                                                        </li>
+                                                        <li><i class="fas fa-check-circle"></i>&nbsp; 20 séances de conduite </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">1249$</div>
+                                                <div class="col-sm-2 bold">1199$</div>
+                                            </div>
+
+                                </div>
+                            </div>
+                        </div>
+        </div>           
+    </div>
+            
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forfait{% endblock %}
+
+{% block body %}
+<div class="page">
+
+
+            {# avantageFormation #}
+            {{ include("general/forfait/avantageformation.html.twig") }}
+
+            <div class="container"id="containerhomebtn">
+                <div class="row">
+                    <div class="col-sm-2">
+                    <button class="doc"><i class="fas fa-file-import"id="logojustificatif">&nbsp;&nbsp;</button></i>
+                        
+                        
+                        <ul class="dd"id="listejustificatif">
+                            <h3 class="docfournir">Document a fournir</h3>
+                            <li>1. Carte d'identité</li>
+                            <li>2. 4 photos d’identités pour permis</li>
+                            <li>3. photocopie Recto / Verso de votre Carte d’identité ou carte de séjour pour les étrangers.</li>
+                            <li>4. Photocopie de la pièce d'identité du parent ou tuteur</li>
+                            <li>5. photocopie de justification de domicile</li>
+                            <li>6. 4 enveloppes A5 timbrés au tarif en vigueur</li>       
+                        </ul>
+                    </div>
+
+
+                    <div class="col-sm-10 boutoncenter">
+                    
+                        <a href="#containertarif1"><button class="btn22">Permis Boite Manuelle</button></a>
+                        <a href="#containertarif2"><button class="btn22">Permis Boite Automatique</button></a>
+                        <a href="#containertarif3"><button class="btn22">Conduite Accompagnée</button></a>
+                        <a href="#containertarif4"><button class="btn22">Permis Moto</button></a>
+                        
+
+                    </div>
+                    {# <div class="col-sm-2 mar"></div> #}
+
+                
+                        
+                        
+                    {# <div class="col-sm-2"></div> #}
+                
+                
+            </div>
+
+{# {{dump(categories)}} #}
+<div class="col-sm-4 totologo">
+                        <div class="col-sm-1"id="nana">
+                  
+                </div></div>
+
+{% for categorie in categories %}
+
+                <div class="container-fluid" id="containertarif{{ categorie.id }}">
+                    <div class="row">
+                        <div class="col-sm-4 totologo"></div>
+                        <div class="col-sm-4 totologo">
+                        <img id="imglog1"src="image/{{ categorie.image }}"></div>
+                        <div class="col12 titretarif">Les Forfait <br>DES PACKS PERMIS<br>{{ categorie.nom }}</div>
+                        
+                    </div>
+
+                    
+                </div>
+
+                    <div class="container-fluid" id="containertarif30">
+                        <div class="row" id="rowtarif40">
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-2"id="packpack1">PACK</div>
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-2"id="public1">PRIX
+                                <div class="col12 ">public</div>
+
+                            </div>
+                            <div class="col-sm-1"id="direct1">-50€
+                                <div class="col12 ">paiement en 1 fois</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    {# il y a autaut d'accordeon que de forfait dans catgorie #}
+ {% for forfait in categorie.forfaits %}  
+                <div class="">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-heading{{ forfait.id }}">
+                                        <button class="accordion-button collapsed pack1" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ forfait.id }} " aria-expanded="false " aria-controls="flush-collapse{{ forfait.id }}">
+                                            <div class="row">
+                                                <div class="col12 permis">{{ forfait.libelle }}</div>
+                                                <div class="col12 description">{{forfait.description}}</div>
+                                            </div>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse{{ forfait.id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{ forfait.id }}" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-sm-6" >
+                                                    <ul>
+                                                        <li class="information">{{ forfait.info1 }}</li>
+                                                        <li class="information">{{ forfait.info2 }}</li>
+                                                        <li class="information">{{ forfait.info3 }}</li>
+                                                        <li class="information">{{ forfait.info4 }}</li>
+                                                        <li class="information">{{ forfait.info5 }}</li>
+                                                        <li class="information">{{ forfait.info6 }}</li>
+                                                        <li class="information">{{ forfait.info7 }}</li>
+                                                        <li class="information">{{ forfait.info8 }}</li>
+                                                        <li class="information">{{ forfait.info9 }}</li>
+                                                        <li class="information">{{ forfait.info10 }}</li>
+                                                        <li class="information">{{ forfait.info11 }}</li>
+                                                        <li class="information">{{ forfait.info12 }}</li>
+                                                        
+                                                        
+                                                   
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-2 bold">{{ forfait.prix }}&nbsp;€</div>
+                                                <div class="col-sm-2 bold">{{forfait.prix - 50 }}&nbsp;€ </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+    {% endfor %}              
+{% endfor %}
+
+                
+  
+            
+{% endblock %}

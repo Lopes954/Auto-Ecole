@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {{ form_start(registrationForm) }}
+
+    
+        <div class="container-fluid" id="formregister">
+    
+            {% for msg in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ msg }}
+                </div>
+            {% endfor %}
+
+       
+
+
+            <h1 class="titleins">inscription</h1>
+
+            <div class="row"id="identifant">
+                <div class="col-sm-4">{{ form_row(registrationForm.email, {label: 'Email'}) }}</div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">{{ form_row(registrationForm.plainPassword, {label: 'Mot de passe'}) }}</div>
+            
+            </div>
+        
+        <div class="col12">{{ form_row(registrationForm.prenom) }}</div>
+        <div class="col12">{{ form_row(registrationForm.nom) }}</div>
+        <div class="col12">{{ form_row(registrationForm.telephone) }}</div>
+        {# <div class="col12">{{ form_row(registrationForm.email) }}</div> #}
+        <div class="col12">{{ form_row(registrationForm.adresse) }}</div>
+        <div class="col12">{{ form_row(registrationForm.age) }}</div>
+        <div class="col-sm-12">
+
+        <button type="submit" class="btnregister">s'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+            
+
+    {{ form_end(registrationForm) }}
+
+        </div>
+    
+ 
+{% endblock %}

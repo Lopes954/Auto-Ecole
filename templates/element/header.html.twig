@@ -1,0 +1,131 @@
+{% block body %}
+
+
+	<div class="container-fluid">
+		<nav class="nav-global">
+			<div class="row">
+			{% if is_granted("ROLE_ADMIN") %}
+				<div class="col-sm-1">
+					
+						<li class="nav-item">
+
+							<a class="nav-link btnins" aria-current="page" href="{{path('admin')}}" id="dashbutton">Modification</a>
+						</li>
+					
+				</div>
+
+				<div class="col-sm-1">
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="{{path('calendar_index')}}" id="rdv">Rendez-vous</a>
+					</li>
+				</div>
+
+					{% else %}
+						<div class="col-sm-2"></div>
+					{% endif %}
+
+
+				<div class="col-sm-2 centernav"></div>
+
+				<div class="col-sm-4">
+					<nav class="navbar navbar-expand-lg navbar-light ">
+						<div class="container-fluid" id="navbarre">
+							<a class="navbar-brand" href="{{path('home')}}">
+								<i class="fas fa-font emote"></i>utoEcole-95</a>
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarNavDropdown">
+								<ul class="navbar-nav">
+									<li class="nav-item">
+										<a class="nav-link active" aria-current="page" href="{{path('forfait')}}">Forfait</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link active" aria-current="page" href="{{path('localisation')}}">Localisation</a>
+									</li>
+												<div class="col-sm-1"></div>
+
+
+									{% if app.user %}
+										<li class="nav-item dropdown"id="dropi">
+											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												Bonjour {{ user.prenom}}
+											</a>
+											<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+												<li>
+													<a class="dropdown-item" href="{{ path('calendar_new') }}">reservation</a>
+												</li>
+												{# <li>
+														<a class="dropdown-item" href="#">Inscription</a>
+																																		</li> #}
+											</ul>
+										</li>
+									{% endif %}
+
+									{# <li class="nav-item">
+										<a class="nav-link active" aria-current="page" href="{{path('localisation')}}">Bonjour</a>
+									</li> #}
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+
+
+				<div class="col-sm-2">
+					<nav class="navbar navbar-expand-lg navbar-light ">
+						<div class="container-fluid">
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+
+								<ul class="navbar-nav">
+									<li class="nav-item">
+										<div class="col-md-2 centernav">
+
+											{% if not app.user %}
+												<a class="nav-link" href="{{path('app_login')}}">
+
+													<li>
+														<a class="nav-link" aria-current="page" href="{{path('app_login')}}" id="conect">connexion</a>
+													</li>
+												</a>
+											</div>
+
+
+											<div class="col-md-2">
+											
+
+											{% else %}
+												<li>
+													<a class="nav-link" aria-current="page" href="{{path('app_logout')}}" id="deco">deconnexion</a>
+												</li>
+											</a>
+										{% endif %}
+									</li>
+								</div>
+							<div class="col-sm-1"></div>
+
+									{% if is_granted("ROLE_ADMIN") %}
+										<li class="nav-item">
+
+											<a class="nav-link btnins" aria-current="page" href="{{path('app_register')}}" id="inscri">inscription</a>
+										</li>
+										{% else %}
+
+									{% endif %}
+
+							</div>
+							
+						</nav>
+					</div>
+			</nav>
+
+		</div>
+			
+
+
+	
+{% endblock body %}

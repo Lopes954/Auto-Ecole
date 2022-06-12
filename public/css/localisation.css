@@ -1,0 +1,82 @@
+body{
+    background-image: url(image/acceuil.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+/* .lolo{
+    margin: 0;
+    padding: 0;
+} */
+#container1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;    padding: 50px;
+    color: rgb(0, 0, 0);
+    padding-top: 0;
+    
+    
+}
+.container-fluid{
+    padding: 0;
+}
+#backgroundnav{
+    background-color: black;
+    padding-top: 15px;
+
+
+}
+
+
+.loc{
+    background-color: #f1f1f1;
+    font-size: 20px;
+    list-style: none;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    margin-top: 20px;
+
+
+}
+.res{
+    background-color: #f1f1f1;
+    font-size: 20px;
+    list-style: none;
+    color: rgb(93, 96, 107);
+    border-radius: 20px;
+    margin-top: 20px;
+
+
+}
+.tagi{
+    list-style: none;
+
+}
+.tago{
+    text-align: center;
+    padding: 20px;
+    list-style: none;
+    text-decoration: none;
+
+}
+.imgreseau{
+    width: 30px;
+    list-style: style none;
+    align-items: center;
+    border-radius: 5px;
+
+
+}
+h4{
+    text-align: center;
+}
+.bureau{
+    background-color: #f1f1f1;
+    list-style: none;
+    border-radius: 20px;
+
+}
+.hconduite{
+    background-color: #f1f1f1;
+    list-style: none;
+    border-radius: 20px;
+}
+

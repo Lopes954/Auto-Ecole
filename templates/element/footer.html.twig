@@ -1,0 +1,75 @@
+{% block body %}
+
+<div class="container-fluid" id="footer" style="background-color: black">
+    <div class="row">
+        
+        <div class="col-sm-2"><img src="{{asset('image/' ~ contact.image)}}"id="imgfooteur" alt="">
+        <div class="col12 resume">{{ contact.resume }}</div>
+        <div class="col12 siege"><i class="far fa-building"></i>&emsp;{{ contact.siege }}</div>
+        <div class="col12 tel"><i class="fas fa-phone"></i>&emsp;{{ contact.tel }}</div>
+        <div class="col12 email"><i class="fas fa-envelope-open-text"></i>&emsp;{{ contact.email }}
+        <div class="row">
+       
+        </div>
+        </div>
+        </div>
+
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2">
+    <div class="col-sm-12 rensei">Renseignement</div>
+    
+
+    <fieldset>
+        {{ form_start(form) }} 
+        <div class="form-group">
+            <div >
+                {{form_widget(form.nom,{'attr':{'placeholder':"nom" }})}} 
+                {{ form_errors(form.nom) }}
+
+            </div>
+            <div >
+                {{form_widget(form.tel,{'attr':{'placeholder':"téléphone"}})}}
+            </div>
+            <div >
+                {{form_widget(form.email,{'attr':{'placeholder':"email"}})}}
+                {{ form_errors(form.email) }}
+            </div>
+
+            <div>
+                 {{form_widget(form.message,{'attr':{'placeholder':"message"}})}}
+            </div>
+
+            <button type="submit" class="btn btn-danger" id="btnrens">
+                {% if form %}
+                Envoyer
+                {% else %}
+                
+                {% endif %}
+            </button>
+        </div>
+
+        {{ form_end(form) }}
+    </fieldset>
+
+
+
+
+        
+    </div>
+        
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+            <h5 class="join">Rejoigner nos réseaux sociaux :</h5>
+            <ul class="lireseau">
+                <li><a href="https://www.facebook.com/"class="lien"><img class="imgreseau"src="{{asset('image/fb.jpg')}}">Auto-ecole-95</li>
+                <li><a href="https://www.twitter.com/"class="lien"><img class="imgreseau"src="{{asset('image/twitter.jpg')}}">@Auto-ecole-95</li>
+                <li><a href="https://www.snapchat.com/"class="lien"><img class="imgreseau"src="{{asset('image/snap.png')}}">Auto-ecole-95</li>
+                <li><a href="https://www.instagram.com/"class="lien"><img class="imgreseau"src="{{asset('image/insta.png')}}">Auto-ecole-95</li>
+                                                
+            </ul>
+        </div>
+    
+    </div>
+</div>
+
+{% endblock body %}
